@@ -46,6 +46,7 @@ public class SecondActivity extends AppCompatActivity {
             NavHelper.with(SecondActivity.this)
                     .goTo(fragment, bundle, R.id.container)
                     .animation()
+                    .customAnimation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down)
                     .tag("fragment_" + numFragment)
                     .add()
                     .addToBackStack()
@@ -70,7 +71,7 @@ public class SecondActivity extends AppCompatActivity {
             if (NavHelper.with(SecondActivity.this).canGoBack("HOME_FRAGMENT", R.id.container)) {
                 NavHelper.with(SecondActivity.this).goBackTo("HOME_FRAGMENT");
             } else {
-                Toast.makeText(SecondActivity.this, "Can't go to fragment 4", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SecondActivity.this, "Can't go to home fragment", Toast.LENGTH_SHORT).show();
             }
         }
         if (id == R.id.action_back) {

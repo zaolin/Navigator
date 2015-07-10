@@ -10,5 +10,5 @@
     <string name="action_new_activity">New Activity</string>
     <string name="action_add_fragment">Add Fragment</string>
     <string name="action_go_to">Go to fragment 4</string>
-    <string name="action_go_to_home">Go to fragment HOME</string>
+    <string name="action_go_to_home">Go to fragment home</string>
 </resources>
