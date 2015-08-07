@@ -10,20 +10,23 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by Raphael on 09/07/2015.
+ * Created by Raphael on 13/07/2015.
  */
 public class NavHelper {
 
     public final static String BUNDLE = "bundle";
     private final static String TAG = NavHelper.class.getName();
+    private static final long DOUBLE_PRESS_INTERVAL = 5 * 1000;
     private static NavHelper instance;
     private static List<String> listStep;
+    private static long lastPressTime;
     private Context context;
     private NavBean bean;
 
@@ -55,10 +58,16 @@ public class NavHelper {
 
     public NavHelper goTo(Class<?> activity, Bundle bundle) {
         Intent intent = new Intent(context, activity);
-        intent.putExtra(BUNDLE, bundle);
+        if(bundle != null) {
+            intent.putExtra(BUNDLE, bundle);
+        }
         bean.setIntent(intent);
         listStep.add(activity.getName());
         return this;
+    }
+
+    public NavHelper goTo(Class<?> activity) {
+        return goTo(activity, null);
     }
 
     public NavHelper goTo(Fragment fragment, Bundle bundle, int container) {
@@ -93,8 +102,12 @@ public class NavHelper {
     }
 
     public void commit() {
+        commit(-1);
+    }
+
+    public void commit(int REQUEST_CODE) {
         if (bean.getIntent() != null) {
-            commitActivity();
+            commitActivity(REQUEST_CODE);
         }
         if (bean.getFragmentManager() != null) {
             commitFragment();
@@ -125,7 +138,15 @@ public class NavHelper {
     }
 
     private void commitActivity() {
-        context.startActivity(bean.getIntent());
+        commitActivity(-1);
+    }
+
+    private void commitActivity(int REQUEST_CODE) {
+        if(REQUEST_CODE > 0) {
+            ((Activity)context).startActivityForResult(bean.getIntent(), REQUEST_CODE);
+        } else {
+            context.startActivity(bean.getIntent());
+        }
         if (bean.isAnimation()) {
             switch (bean.getAnimations().length) {
                 case 2:
@@ -140,6 +161,7 @@ public class NavHelper {
 
     private void commitFragment() {
         listStep.add(bean.getTag());
+
         FragmentTransaction fragmentTransaction = bean.getFragmentManager().beginTransaction();
         if (bean.isAnimation()) {
             switch (bean.getAnimations().length) {
@@ -168,8 +190,8 @@ public class NavHelper {
         fragmentTransaction.commit();
     }
 
-    public boolean canGoBack(String tag, int container) {
-        FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
+    public boolean canGoBack(String tag, int container, FragmentManager fragmentManager) {
+        //FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
         if (TextUtils.isEmpty(tag)) {
             return (fragmentManager.getBackStackEntryCount() > 1);
         } else {
@@ -187,8 +209,8 @@ public class NavHelper {
         }
     }
 
-    public boolean canGoBack() {
-        return canGoBack(null, 0);
+    public boolean canGoBack(FragmentManager fragmentManager) {
+        return canGoBack(null, 0, fragmentManager);
     }
 
     public void goBackTo(String tag) {
@@ -205,7 +227,14 @@ public class NavHelper {
                 }
             }
         } else {
-            Log.e(TAG, "no fragment found!");
+            Log.e(TAG, "no fragment found");
+        }
+    }
+
+    public void goBack() {
+        FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
+        if (canGoBack(fragmentManager)) {
+            fragmentManager.popBackStack();
         }
     }
 
@@ -218,6 +247,15 @@ public class NavHelper {
             Log.d(TAG, "position: " + i + " name: " + fragmentManager.getBackStackEntryAt(i).getName());
         }
         return fragmentList;
+    }
+
+    public void backHome(Activity activity, String message) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+        long pressTime = System.currentTimeMillis();
+        if ((pressTime - lastPressTime) <= DOUBLE_PRESS_INTERVAL) {
+            activity.finish();
+        }
+        lastPressTime = pressTime;
     }
 
     private enum COMMIT_TYPE {
