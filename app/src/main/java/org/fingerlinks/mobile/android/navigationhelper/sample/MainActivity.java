@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.fingerlinks.mobile.android.navigationhelper.NavHelper;
+import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_new_activity) {
             Bundle bundle = new Bundle();
             bundle.putString("TITLE", "Title from bundle");
-            NavHelper.with(MainActivity.this)
+            NavigatorHelper.with(MainActivity.this)
                     .goTo(SecondActivity.class, bundle)
                     .animation()
                     .commit();
             return true;
         }
         if (id == R.id.action_debug) {
-            NavHelper.with(MainActivity.this)
+            NavigatorHelper.with(MainActivity.this)
                     .printDebug();
         }
         return super.onOptionsItemSelected(item);
