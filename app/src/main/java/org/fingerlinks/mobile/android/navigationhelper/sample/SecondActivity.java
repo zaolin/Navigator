@@ -3,6 +3,7 @@ package org.fingerlinks.mobile.android.navigationhelper.sample;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -10,8 +11,10 @@ import android.widget.Toast;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
 
-
 public class SecondActivity extends AppCompatActivity {
+
+    private static final String TAG = SecondActivity.class.getName();
+    int numFragment = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +22,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Bundle bundle = getIntent().getBundleExtra(NavigatorHelper.BUNDLE);
         setTitle(bundle.getString("TITLE"));
-        Fragment fragment = new SecondActivityFragment();
+        Fragment fragment = new SecondFragment();
         NavigatorHelper.with(SecondActivity.this)
                 .goTo(fragment, null, R.id.container)
                 .tag("HOME_FRAGMENT")
@@ -28,20 +31,17 @@ public class SecondActivity extends AppCompatActivity {
                 .commit();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_second, menu);
         return true;
     }
 
-    int numFragment = 1;
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add_fragment) {
-            Fragment fragment = new SecondTestActivityFragment();
+            Fragment fragment = new SecondTestFragment();
             Bundle bundle = new Bundle();
             bundle.putString("TEST", "fragment number " + numFragment);
             NavigatorHelper.with(SecondActivity.this)
@@ -67,7 +67,9 @@ public class SecondActivity extends AppCompatActivity {
                     NavigatorHelper.
                             with(SecondActivity.this).
                             goBackTo("fragment_4");
-                } catch(NavigatorException _ex) {}
+                } catch (NavigatorException _ex) {
+                    Log.d(TAG, _ex.getMessage());
+                }
 
             } else {
                 Toast.makeText(SecondActivity.this, "Can't go to fragment 4", Toast.LENGTH_SHORT).show();
@@ -77,7 +79,8 @@ public class SecondActivity extends AppCompatActivity {
             if (NavigatorHelper.with(SecondActivity.this).canGoBack("HOME_FRAGMENT", R.id.container, getSupportFragmentManager())) {
                 try {
                     NavigatorHelper.with(SecondActivity.this).goBackTo("HOME_FRAGMENT");
-                } catch(NavigatorException _ex) {}
+                } catch (NavigatorException _ex) {
+                }
             } else {
                 Toast.makeText(SecondActivity.this, "Can't go to home fragment", Toast.LENGTH_SHORT).show();
             }

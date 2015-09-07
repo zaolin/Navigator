@@ -19,4 +19,4 @@ public class NavigatorException extends Throwable {
     public NavigatorException(Throwable cause) {
         super(cause);
     }
-};
+}

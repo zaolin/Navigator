@@ -24,8 +24,10 @@ import java.util.List;
  */
 public class NavigatorHelper {
 
+    public final static String BUNDLE = NavigatorHelper.class.getName() + ".bundle";
+    private final static String TAG = NavigatorHelper.class.getName();
+    private static final long DOUBLE_PRESS_INTERVAL = 5 * 1000;
     private static NavigatorHelper mInstance;
-
     private List<String> listStep;
     private long lastPressTime;
     private Context mContext;
@@ -52,7 +54,7 @@ public class NavigatorHelper {
 
     public NavigatorHelper goTo(Class<?> activity, Bundle bundle) {
         Intent intent = new Intent(mContext, activity);
-        if(bundle != null) {
+        if (bundle != null) {
             intent.putExtra(BUNDLE, bundle);
         }
         mNavBean.setIntent(intent);
@@ -66,10 +68,17 @@ public class NavigatorHelper {
 
     public NavigatorHelper goTo(Fragment fragment, Bundle bundle, int container) {
         FragmentManager fragmentManager = ((FragmentActivity) mContext).getSupportFragmentManager();
-        fragment.setArguments(bundle);
+        if (bundle != null) {
+            fragment.setArguments(bundle);
+        }
         mNavBean.setFragment(fragment);
         mNavBean.setFragmentManager(fragmentManager);
         mNavBean.setContainer(container);
+        return this;
+    }
+
+    public NavigatorHelper goTo(Fragment fragment, int container) {
+        goTo(fragment, null, container);
         return this;
     }
 
@@ -168,7 +177,7 @@ public class NavigatorHelper {
             }
         } else {
             Log.e(TAG, "no fragment found");
-            String message = "Fragment with TAG["+tag+"] not found into backstack entry";
+            String message = "Fragment with TAG[" + tag + "] not found into backstack entry";
             throw new NavigatorException(message);
         }
     }
@@ -189,7 +198,9 @@ public class NavigatorHelper {
         lastPressTime = pressTime;
     }
 
-    /************************** Private class Method ***********************************************/
+    /**************************
+     * Private class Method
+     ***********************************************/
 
     private void initNavHelper(Context context) {
         this.mContext = context;
@@ -205,7 +216,7 @@ public class NavigatorHelper {
     }
 
     private void commitActivity(int REQUEST_CODE) {
-        if(REQUEST_CODE > 0) {
+        if (REQUEST_CODE > 0) {
             ((Activity) mContext).startActivityForResult(mNavBean.getIntent(), REQUEST_CODE);
         } else {
             mContext.startActivity(mNavBean.getIntent());
@@ -265,8 +276,4 @@ public class NavigatorHelper {
         }
         return fragmentList;
     }
-
-    public final static String BUNDLE = NavigatorHelper.class.getName()+".bundle";
-    private final static String TAG = NavigatorHelper.class.getName();
-    private static final long DOUBLE_PRESS_INTERVAL = 5 * 1000;
-};
+}

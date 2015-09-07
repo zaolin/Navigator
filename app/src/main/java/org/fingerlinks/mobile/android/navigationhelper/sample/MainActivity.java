@@ -40,4 +40,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        NavigatorHelper.with(MainActivity.this).backHome(MainActivity.this, "Press again to exit!");
+    }
 }

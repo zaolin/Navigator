@@ -17,4 +17,4 @@ public enum CommitTypeEnum {
     public int getGetCommitType() {
         return getCommitType;
     }
-};
+}

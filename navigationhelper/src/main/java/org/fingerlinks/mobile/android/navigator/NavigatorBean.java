@@ -19,8 +19,10 @@ class NavigatorBean implements Serializable {
     private String tag = null;
     private boolean animation = false;
     private int[] animations = new int[0];
+    private CommitTypeEnum type;
 
-    protected NavigatorBean() {}
+    protected NavigatorBean() {
+    }
 
     public Intent getIntent() {
         return intent;
@@ -96,6 +98,4 @@ class NavigatorBean implements Serializable {
     public void setAnimations(int[] animations) {
         this.animations = animations;
     }
-
-    private CommitTypeEnum type;
-};
+}
