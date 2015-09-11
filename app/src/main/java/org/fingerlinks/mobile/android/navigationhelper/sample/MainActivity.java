@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.fingerlinks.mobile.android.navigator.Navigator;
 import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
 
 
@@ -28,21 +29,38 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_new_activity) {
             Bundle bundle = new Bundle();
             bundle.putString("TITLE", "Title from bundle");
-            NavigatorHelper.with(MainActivity.this)
+
+            /**
+             * Activity example
+             */
+            Navigator
+                .with(MainActivity.this)
+                .build() //Enter in navigation mode
+                .animation() //Add default animation
+                .goTo(SecondActivity.class, bundle) //set destination and Bundle data
+                .addRequestCode(9001) //set REQUEST_CODE
+                .commit(); //Execute startActivity -- startActivityForResult
+
+            /*NavigatorHelper
+                    .with(MainActivity.this)
                     .goTo(SecondActivity.class, bundle)
                     .animation()
-                    .commit();
+                    .commit();*/
             return true;
         }
         if (id == R.id.action_debug) {
-            NavigatorHelper.with(MainActivity.this)
-                    .printDebug();
+            //TODO @Raphael ripristinare
+            //NavigatorHelper.with(MainActivity.this)
+            //        .printDebug();
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
-        NavigatorHelper.with(MainActivity.this).backHome(MainActivity.this, "Press again to exit!");
+        Navigator.with(MainActivity.this)
+                .utils()
+                .confirmExitWithMessage("Press again to exit!");
     }
-}
+
+};

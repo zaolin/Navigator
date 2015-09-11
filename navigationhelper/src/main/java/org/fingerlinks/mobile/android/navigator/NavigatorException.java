@@ -3,7 +3,7 @@ package org.fingerlinks.mobile.android.navigator;
 /**
  * Created by fabio on 06/09/15.
  */
-public class NavigatorException extends Throwable {
+public class NavigatorException extends RuntimeException {
 
     public NavigatorException() {
     }

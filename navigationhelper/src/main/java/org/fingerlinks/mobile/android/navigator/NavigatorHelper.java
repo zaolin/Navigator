@@ -21,7 +21,23 @@ import java.util.List;
 
 /**
  * Encapsulates navigation operations between fragments or activity
+ * @deprecated  Migrate to Builders pattern</br>
+ *              {will be removed in version 1.1} </br>
+ *              use {@link Navigator} instead like this:
+ *
+ * <blockquote>
+ * <pre>
+ * Navigator
+ *   .with(MainActivity.this)
+ *   .build() //Enter in navigation mode
+ *   .animation() //Add default animation
+ *   .goTo(SecondActivity.class, bundle) //set destination and Bundle data
+ *   .addRequestCode(9001) //set REQUEST_CODE
+ *   .commit(); //Execute startActivity -- startActivityForResult
+ * </pre></blockquote>
+ *
  */
+@Deprecated()
 public class NavigatorHelper {
 
     public final static String BUNDLE = NavigatorHelper.class.getName() + ".bundle";
@@ -276,4 +292,4 @@ public class NavigatorHelper {
         }
         return fragmentList;
     }
-}
+};

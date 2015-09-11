@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.fingerlinks.mobile.android.navigator.Navigator;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
 
@@ -23,12 +24,17 @@ public class SecondActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getBundleExtra(NavigatorHelper.BUNDLE);
         setTitle(bundle.getString("TITLE"));
         Fragment fragment = new SecondFragment();
-        NavigatorHelper.with(SecondActivity.this)
-                .goTo(fragment, null, R.id.container)
+
+        Navigator
+                .with(SecondActivity.this)
+                .build() //Enter in navigation mode
+                .goTo(fragment, bundle, R.id.container)
+                .animation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down) //Add custom animation
                 .tag("HOME_FRAGMENT")
-                .add()
-                .addToBackStack()
-                .commit();
+                .addToBackStack() //add backstack
+                .add() //CommitType
+                .commit(); //commit operation
+
     }
 
     @Override
@@ -44,57 +50,58 @@ public class SecondActivity extends AppCompatActivity {
             Fragment fragment = new SecondTestFragment();
             Bundle bundle = new Bundle();
             bundle.putString("TEST", "fragment number " + numFragment);
-            NavigatorHelper.with(SecondActivity.this)
+
+            Navigator
+                    .with(SecondActivity.this)
+                    .build() //Enter in navigation mode
                     .goTo(fragment, bundle, R.id.container)
-                    .animation()
-                    .customAnimation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down)
+                    .animation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down) //Add custom animation
                     .tag("fragment_" + numFragment)
-                    .add()
-                    .addToBackStack()
-                    .commit();
+                    .addToBackStack() //add backstack
+                    .add() //CommitType
+                    .commit(); //commit operation
+
             numFragment++;
             return true;
         }
         if (id == R.id.action_debug) {
-            NavigatorHelper.with(SecondActivity.this).printDebug();
+            //NavigatorHelper.with(SecondActivity.this).printDebug();
         }
         if (id == R.id.action_close) {
             finish();
         }
         if (id == R.id.action_go_to) {
-            if (NavigatorHelper.with(SecondActivity.this).canGoBack("fragment_4", R.id.container, getSupportFragmentManager())) {
-                try {
-                    NavigatorHelper.
-                            with(SecondActivity.this).
-                            goBackTo("fragment_4");
-                } catch (NavigatorException _ex) {
-                    Log.d(TAG, _ex.getMessage());
-                }
-
-            } else {
-                Toast.makeText(SecondActivity.this, "Can't go to fragment 4", Toast.LENGTH_SHORT).show();
+            try {
+                Navigator
+                        .with(SecondActivity.this).utils()
+                        .goBackToSpecificPoint("fragment_4");
+            } catch (NavigatorException _ex) {
+                Toast.makeText(SecondActivity.this, _ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         }
+
         if (id == R.id.action_go_to_home) {
-            if (NavigatorHelper.with(SecondActivity.this).canGoBack("HOME_FRAGMENT", R.id.container, getSupportFragmentManager())) {
-                try {
-                    NavigatorHelper.with(SecondActivity.this).goBackTo("HOME_FRAGMENT");
-                } catch (NavigatorException _ex) {
-                }
-            } else {
+            try {
+                Navigator
+                        .with(SecondActivity.this)
+                        .utils()
+                        .goBackToSpecificPoint("HOME_FRAGMENT");
+            } catch (NavigatorException _ex) {
                 Toast.makeText(SecondActivity.this, "Can't go to home fragment", Toast.LENGTH_SHORT).show();
             }
         }
         if (id == R.id.action_back) {
+
             Toast.makeText(SecondActivity.this, "Can go back? " +
-                    NavigatorHelper.with(SecondActivity.this).canGoBack(getSupportFragmentManager()), Toast.LENGTH_SHORT).show();
+                Navigator.with(SecondActivity.this).utils()
+                        .canGoBack(getSupportFragmentManager()), Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
-        if (NavigatorHelper.with(SecondActivity.this).canGoBack(getSupportFragmentManager())) {
+        if (Navigator.with(SecondActivity.this).utils().canGoBack(getSupportFragmentManager())) {
             super.onBackPressed();
         } else {
             finish();

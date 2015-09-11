@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * Created by fabio on 06/09/15.
  */
-class NavigatorBean implements Serializable {
+public class NavigatorBean implements Serializable {
 
     private Intent intent = null;
     private FragmentManager fragmentManager = null;
@@ -20,9 +20,9 @@ class NavigatorBean implements Serializable {
     private boolean animation = false;
     private int[] animations = new int[0];
     private CommitTypeEnum type;
+    private int requestCode;
 
-    protected NavigatorBean() {
-    }
+    protected NavigatorBean() {}
 
     public Intent getIntent() {
         return intent;
@@ -95,7 +95,15 @@ class NavigatorBean implements Serializable {
         return animations;
     }
 
-    public void setAnimations(int[] animations) {
+    public void setAnimations(int... animations) {
         this.animations = animations;
+    }
+
+    public int getRequestCode() {
+        return requestCode;
+    }
+
+    public void setRequestCode(int requestCode) {
+        this.requestCode = requestCode;
     }
 }
