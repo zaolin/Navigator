@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 
-import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
+import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 
 /**
  * Created by fabio on 07/09/15.

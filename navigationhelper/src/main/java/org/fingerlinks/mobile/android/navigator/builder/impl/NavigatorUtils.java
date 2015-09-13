@@ -1,7 +1,6 @@
 package org.fingerlinks.mobile.android.navigator.builder.impl;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 import org.fingerlinks.mobile.android.navigationhelper.BuildConfig;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
-import org.fingerlinks.mobile.android.navigator.builder.INavigatorUtils;
 import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 
 import java.util.ArrayList;

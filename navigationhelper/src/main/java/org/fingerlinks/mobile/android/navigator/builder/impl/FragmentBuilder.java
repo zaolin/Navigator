@@ -1,12 +1,10 @@
 package org.fingerlinks.mobile.android.navigator.builder.impl;
 
-import android.util.Log;
-
 import org.fingerlinks.mobile.android.navigator.CommitTypeEnum;
-import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
+import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 
 /**
  * Created by fabio on 11/09/15.

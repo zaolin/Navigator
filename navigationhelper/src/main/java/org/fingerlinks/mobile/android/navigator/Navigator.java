@@ -3,7 +3,6 @@ package org.fingerlinks.mobile.android.navigator;
 import android.content.Context;
 
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
-import org.fingerlinks.mobile.android.navigator.builder.IGoToBuilder;
 import org.fingerlinks.mobile.android.navigator.builder.impl.GoToBuilder;
 import org.fingerlinks.mobile.android.navigator.builder.impl.NavigatorUtils;
 import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
@@ -21,7 +20,7 @@ public class Navigator {
     }
 
     /**
-     * Get the default Ion object instance and begin building a request
+     * Get the default Navigator object instance and begin building a request
      * @param context
      * @return
      */
@@ -43,7 +42,7 @@ public class Navigator {
 
     private static Navigator getInstance(Context context) {
         if (context == null)
-            throw new NullPointerException("Can not pass null context in to retrieve ion instance");
+            throw new NullPointerException("Can not pass null context in to retrieve Navigator instance");
 
         if(mInstance == null) {
             mInstance = new Navigator(context);
