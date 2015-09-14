@@ -37,7 +37,6 @@ public class Navigator {
         return new GoToBuilder(ContextReference.fromContext(mContext), mNavBean);
     }
 
-
     /*********************** private method ******************************************************/
 
     private static Navigator getInstance(Context context) {
@@ -47,7 +46,7 @@ public class Navigator {
         if(mInstance == null) {
             mInstance = new Navigator(context);
         }
-        return mInstance;
+    return mInstance;
     }
 
     private NavigatorBean mNavBean;

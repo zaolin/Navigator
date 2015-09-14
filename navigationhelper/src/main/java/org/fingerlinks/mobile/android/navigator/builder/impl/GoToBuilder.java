@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
+import org.fingerlinks.mobile.android.navigator.Navigator;
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
@@ -74,5 +75,5 @@ public class GoToBuilder extends BaseBuilder implements Builders.Any.G {
     return new FragmentBuilder(mContextReference, mNavigatorBean);
     }
 
-    private final static String BUNDLE = NavigatorHelper.class.getName()+".bundle";
+    public final static String BUNDLE = Navigator.class.getName()+".bundle";
 };
