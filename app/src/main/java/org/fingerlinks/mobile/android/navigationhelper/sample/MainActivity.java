@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
             Navigator
                 .with(MainActivity.this)
                 .build() //Enter in navigation mode
-                .animation() //Add default animation
                 .goTo(SecondActivity.class, bundle) //set destination and Bundle data
+                .animation() //Add default animation
                 .addRequestCode(9001) //set REQUEST_CODE
                 .commit(); //Execute startActivity -- startActivityForResult
 

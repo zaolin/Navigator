@@ -24,5 +24,23 @@ public class ActivityBuilder extends BaseBuilder implements Builders.Any.A {
         new NavigatorBuilder(mContextReference, mNavigatorBean, false).commit();
     }
 
+    @Override
+    public Builders.Any.A animation() {
+        if(mNavigatorBean == null) {
+            throw new NavigatorException("NavBean not initialized");
+        }
+        mNavigatorBean.setAnimation(true);
+        return this;
+    }
+
+    @Override
+    public Builders.Any.A animation(int enter, int exit) {
+        int[] animations = new int[2];
+        animations[0] = enter;
+        animations[1] = exit;
+        mNavigatorBean.setAnimations(animations);
+        return this;
+    }
+
     private final static String TAG = ActivityBuilder.class.getName();
 };

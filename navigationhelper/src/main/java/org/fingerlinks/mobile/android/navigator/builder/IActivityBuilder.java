@@ -11,4 +11,16 @@ public interface IActivityBuilder<A extends IActivityBuilder> {
      * replacement method Builders.Any.N.commit () only to avoid duplication of the method call
      */
     void commit();
+
+    /**
+     *
+     */
+    A animation();
+
+    /**
+     *
+     * @param enter
+     * @param exit
+     */
+    A animation(int enter, int exit);
 };

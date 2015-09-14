@@ -26,6 +26,18 @@ public interface IFragmentBuilder<F extends IFragmentBuilder> {
 
     /**
      *
+     */
+    F animation();
+
+    /**
+     *
+     * @param enter
+     * @param exit
+     */
+    F animation(int enter, int exit);
+
+    /**
+     *
      * @param enter
      * @param exit
      * @param popEnter

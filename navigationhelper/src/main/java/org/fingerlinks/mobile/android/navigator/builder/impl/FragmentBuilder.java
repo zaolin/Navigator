@@ -34,6 +34,24 @@ public class FragmentBuilder extends BaseBuilder implements Builders.Any.F {
     }
 
     @Override
+    public Builders.Any.F animation() {
+        if(mNavigatorBean == null) {
+            throw new NavigatorException("NavBean not initialized");
+        }
+        mNavigatorBean.setAnimation(true);
+        return this;
+    }
+
+    @Override
+    public Builders.Any.F animation(int enter, int exit) {
+        int[] animations = new int[2];
+        animations[0] = enter;
+        animations[1] = exit;
+        mNavigatorBean.setAnimations(animations);
+        return this;
+    }
+
+    @Override
     public Builders.Any.F animation(int enter, int exit, int popEnter, int popExit) {
         int[] animations = new int[4];
         animations[0] = enter;

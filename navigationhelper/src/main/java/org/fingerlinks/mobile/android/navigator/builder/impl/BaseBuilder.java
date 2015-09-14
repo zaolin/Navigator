@@ -25,4 +25,6 @@ public class BaseBuilder {
         mNavigatorBean = navigatorBean;
     }
 
+    
+
 };

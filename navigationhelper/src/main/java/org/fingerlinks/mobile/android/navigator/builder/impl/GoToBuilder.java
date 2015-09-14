@@ -23,24 +23,6 @@ public class GoToBuilder extends BaseBuilder implements Builders.Any.G {
     }
 
     @Override
-    public GoToBuilder animation() {
-        if(mNavigatorBean == null) {
-            throw new NavigatorException("NavBean not initialized");
-        }
-        mNavigatorBean.setAnimation(true);
-        return this;
-    }
-
-    @Override
-    public GoToBuilder animation(int enter, int exit) {
-        int[] animations = new int[2];
-        animations[0] = enter;
-        animations[1] = exit;
-        mNavigatorBean.setAnimations(animations);
-        return this;
-    }
-
-    @Override
     public Builders.Any.A goTo(Class<?> activity) {
         goTo(activity, null);
         return new ActivityBuilder(mContextReference, mNavigatorBean);

@@ -9,18 +9,6 @@ import android.support.v4.app.Fragment;
 public interface IGoToBuilder<A extends IActivityBuilder, F extends IFragmentBuilder> {
 
     /**
-     *
-     */
-    IGoToBuilder animation();
-
-    /**
-     *
-     * @param enter
-     * @param exit
-     */
-    IGoToBuilder animation(int enter, int exit);
-
-    /**
      * @param activity
      * @return
      */

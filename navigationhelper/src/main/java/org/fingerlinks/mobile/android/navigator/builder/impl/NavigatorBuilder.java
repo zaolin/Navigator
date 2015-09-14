@@ -110,6 +110,10 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
                         mNavigatorBean.getFragment(),
                         mNavigatorBean.getTag());
                 break;
+
+            default:
+                String message = "Attention! set CommitType before call commit";
+                throw new NavigatorException(message);
         }
 
         if (mNavigatorBean.isAddToBackStack()) {
