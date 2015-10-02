@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.fingerlinks.mobile.android.navigator.Navigator;
-import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
 
 
 public class MainActivity extends AppCompatActivity {

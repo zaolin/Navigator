@@ -3,14 +3,13 @@ package org.fingerlinks.mobile.android.navigationhelper.sample;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.fingerlinks.mobile.android.navigator.Navigator;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
-import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
+import org.fingerlinks.mobile.android.navigator.utils.Constant;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        Bundle bundle = getIntent().getBundleExtra(NavigatorHelper.BUNDLE);
+        Bundle bundle = getIntent().getBundleExtra(Constant.BUNDLE);
         setTitle(bundle.getString("TITLE"));
         Fragment fragment = new SecondFragment();
 
