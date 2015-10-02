@@ -70,6 +70,9 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
         if ((pressTime - lastPressTime) <= doublePressInterval) {
             lastPressTime = 0;
             ((Activity)mContextReference.getContext()).finish();
+            Log.e(TAG, "nullify mContextReference");
+            mContextReference = null;
+
         }
         lastPressTime = pressTime;
     }

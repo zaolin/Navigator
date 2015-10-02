@@ -12,7 +12,7 @@ import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
  */
 public class Navigator {
 
-    private static Navigator mInstance;
+    private Navigator mInstance;
     private Context mContext;
 
     private Navigator(Context context) {
@@ -43,10 +43,10 @@ public class Navigator {
         if (context == null)
             throw new NullPointerException("Can not pass null context in to retrieve Navigator instance");
 
-        if(mInstance == null) {
-            mInstance = new Navigator(context);
-        }
-    return mInstance;
+        //if(mInstance == null) {
+        //    mInstance = new Navigator(context);
+        //}
+    return new Navigator(context); //mInstance;
     }
 
     private NavigatorBean mNavBean;
