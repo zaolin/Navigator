@@ -23,7 +23,7 @@ android {
 publish {
     userOrg = 'dev-fingerlinks'
     groupId = 'org.fingerlinks.mobile.android'
-    artifactId = 'navigator'
+    artifactId = 'Navigator'
     publishVersion = '0.0.1'
 }
 
