@@ -3,7 +3,7 @@ package org.fingerlinks.mobile.android.navigator.builder.impl;
 import android.app.Activity;
 import android.support.v4.app.FragmentTransaction;
 
-import org.fingerlinks.mobile.android.navigationhelper.R;
+import org.fingerlinks.mobile.android.navigator.R;
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
