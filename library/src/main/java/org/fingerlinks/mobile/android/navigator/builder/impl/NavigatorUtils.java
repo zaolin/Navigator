@@ -22,13 +22,16 @@ import java.util.List;
  */
 public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
 
+    /**
+     * @param context reference from context
+     * @throws NavigatorException navigator specific error
+     */
     public NavigatorUtils(ContextReference context) throws NavigatorException {
         super(context, null);
     }
 
     /**
-     *
-     * @param message
+     * @param message specific exit message
      */
     public void confirmExitWithMessage(int message) {
         confirmExitWithMessage(
@@ -36,8 +39,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     /**
-     *
-     * @param message
+     * @param message specific exit message
      */
     public void confirmExitWithMessage(String message) {
         confirmExitWithMessage(
@@ -45,9 +47,8 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     /**
-     *
-     * @param message
-     * @param doublePressInterval
+     * @param message specific exit message
+     * @param doublePressInterval duration time between message
      */
     public void confirmExitWithMessage(int message, long doublePressInterval) {
         confirmExitWithMessage(
@@ -56,9 +57,9 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     /**
-     *
-     * @param message
-     * @param doublePressInterval
+     * Generate Toast for confirm user exit
+     * @param message specific exit message
+     * @param doublePressInterval duration time between message
      */
     public void confirmExitWithMessage(String message, long doublePressInterval) {
 
@@ -77,6 +78,10 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
         lastPressTime = pressTime;
     }
 
+    /**
+     * Return to previous point
+     * @throws NavigatorException navigator specific error
+     */
     public void goToPreviousBackStack() throws NavigatorException {
         FragmentManager fragmentManager = ((FragmentActivity)mContextReference.getContext())
                 .getSupportFragmentManager();
@@ -88,9 +93,8 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     /**
-     *
-     * @param tag
-     * @throws NavigatorException
+     * @param tag point to return
+     * @throws NavigatorException  navigator specific error
      */
     public void goBackToSpecificPoint(String tag) throws NavigatorException {
         FragmentManager fragmentManager = ((FragmentActivity)mContextReference.getContext()).getSupportFragmentManager();
@@ -114,9 +118,8 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     /**
-     *
-     * @param fragmentManager
-     * @return
+     * @param fragmentManager variable contain fragment stack
+     * @return true if possible canGoBack
      */
     public boolean canGoBack(FragmentManager fragmentManager) {
         return canGoBackToSpecificPoint(null, 0, fragmentManager);
@@ -124,10 +127,10 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
 
     /**
      *
-     * @param tag
-     * @param container
-     * @param fragmentManager
-     * @return
+     * @param tag point to return
+     * @param container id container
+     * @param fragmentManager variable contain fragment stack
+     * @return true if is possible return to tag param
      */
     public boolean canGoBackToSpecificPoint(String tag, int container, FragmentManager fragmentManager) {
         if (TextUtils.isEmpty(tag)) {
@@ -163,6 +166,4 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     private static long lastPressTime = 0;
     private final static String TAG = NavigatorUtils.class.getName();
     private static final long DOUBLE_PRESS_INTERVAL = 5 * 1000;
-
-
 };
