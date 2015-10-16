@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.fingerlinks.mobile.android.navigationhelper.BuildConfig;
+import org.fingerlinks.mobile.android.navigator.BuildConfig;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
 import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
@@ -93,9 +93,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
      * @throws NavigatorException
      */
     public void goBackToSpecificPoint(String tag) throws NavigatorException {
-
-        FragmentManager fragmentManager = ((FragmentActivity)mContextReference.getContext())
-                .getSupportFragmentManager();
+        FragmentManager fragmentManager = ((FragmentActivity)mContextReference.getContext()).getSupportFragmentManager();
         if (fragmentManager.findFragmentByTag(tag) != null) {
             List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
             Collections.reverse(fragmentList);

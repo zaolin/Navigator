@@ -12,8 +12,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.fingerlinks.mobile.android.navigationhelper.BuildConfig;
-import org.fingerlinks.mobile.android.navigationhelper.R;
+import org.fingerlinks.mobile.android.navigator.BuildConfig;
+import org.fingerlinks.mobile.android.navigator.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -6,11 +6,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-import org.fingerlinks.mobile.android.navigator.Navigator;
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
-import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
+import org.fingerlinks.mobile.android.navigator.utils.Constant;
 import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 
 /**
@@ -32,7 +31,7 @@ public class GoToBuilder extends BaseBuilder implements Builders.Any.G {
     public Builders.Any.A goTo(Class<?> activity, Bundle bundle) {
         Intent intent = new Intent(mContextReference.getContext(), activity);
         if (bundle != null) {
-            intent.putExtra(BUNDLE, bundle);
+            intent.putExtra(Constant.BUNDLE, bundle);
         }
         mNavigatorBean.setIntent(intent);
         //listStep.add(activity.getName());
@@ -57,5 +56,4 @@ public class GoToBuilder extends BaseBuilder implements Builders.Any.G {
     return new FragmentBuilder(mContextReference, mNavigatorBean);
     }
 
-    public final static String BUNDLE = Navigator.class.getName()+".bundle";
 };

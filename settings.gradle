@@ -1,1 +1,1 @@
-include ':app', ':navigationhelper'
+include ':sample', ':library'

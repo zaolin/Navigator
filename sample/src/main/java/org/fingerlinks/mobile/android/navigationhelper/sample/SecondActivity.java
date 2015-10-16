@@ -3,7 +3,6 @@ package org.fingerlinks.mobile.android.navigationhelper.sample;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -11,6 +10,7 @@ import android.widget.Toast;
 import org.fingerlinks.mobile.android.navigator.Navigator;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
+import org.fingerlinks.mobile.android.navigator.utils.Constant;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -21,12 +21,11 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        Bundle bundle = getIntent().getBundleExtra(NavigatorHelper.BUNDLE);
+        Bundle bundle = getIntent().getBundleExtra(Constant.BUNDLE);
         setTitle(bundle.getString("TITLE"));
         Fragment fragment = new SecondFragment();
 
-        Navigator
-                .with(SecondActivity.this)
+        Navigator.with(SecondActivity.this)
                 .build() //Enter in navigation mode
                 .goTo(fragment, bundle, R.id.container)
                 .animation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down) //Add custom animation
@@ -51,8 +50,7 @@ public class SecondActivity extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putString("TEST", "fragment number " + numFragment);
 
-            Navigator
-                    .with(SecondActivity.this)
+            Navigator.with(SecondActivity.this)
                     .build() //Enter in navigation mode
                     .goTo(fragment, bundle, R.id.container)
                     .animation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down) //Add custom animation
@@ -71,13 +69,13 @@ public class SecondActivity extends AppCompatActivity {
             finish();
         }
         if (id == R.id.action_go_to) {
-            try {
-                Navigator
-                        .with(SecondActivity.this).utils()
+            /*try {
+                Navigator.with(SecondActivity.this).utils()
                         .goBackToSpecificPoint("fragment_4");
             } catch (NavigatorException _ex) {
                 Toast.makeText(SecondActivity.this, _ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
+            }*/
+            NavigatorHelper.with(SecondActivity.this).goBackTo("fragment_4");
         }
 
         if (id == R.id.action_go_to_home) {
@@ -93,8 +91,8 @@ public class SecondActivity extends AppCompatActivity {
         if (id == R.id.action_back) {
 
             Toast.makeText(SecondActivity.this, "Can go back? " +
-                Navigator.with(SecondActivity.this).utils()
-                        .canGoBack(getSupportFragmentManager()), Toast.LENGTH_SHORT).show();
+                    Navigator.with(SecondActivity.this).utils()
+                            .canGoBack(getSupportFragmentManager()), Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }

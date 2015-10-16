@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.fingerlinks.mobile.android.navigationhelper">
+    package="org.fingerlinks.mobile.android.navigator">
 
     <application
         android:allowBackup="true"
