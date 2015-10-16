@@ -97,6 +97,7 @@ public class NavigatorBean implements Serializable {
 
     public void setAnimations(int... animations) {
         this.animations = animations;
+        setAnimation(true);
     }
 
     public int getRequestCode() {
