@@ -163,7 +163,17 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
         return fragmentList;
     }
 
+    public String getActualTag() {
+        List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
+        return fragmentList.get(fragmentList.size() - 1).getName();
+    }
+
+    public boolean isActualShowing(String tag) {
+        List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
+        return fragmentList.get(fragmentList.size() - 1).getName().equals(tag);
+    }
+
     private static long lastPressTime = 0;
     private final static String TAG = NavigatorUtils.class.getName();
     private static final long DOUBLE_PRESS_INTERVAL = 5 * 1000;
-};
+}
