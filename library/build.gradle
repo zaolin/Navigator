@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 23
-        versionCode 3
-        versionName "0.0.3"
+        versionCode 4
+        versionName "0.0.4"
     }
     buildTypes {
         release {
@@ -24,7 +24,7 @@ publish {
     userOrg = 'dev-fingerlinks'
     groupId = 'org.fingerlinks.mobile.android'
     artifactId = 'Navigator'
-    publishVersion = '0.0.3'
+    publishVersion = '0.0.4'
 }
 
 dependencies {

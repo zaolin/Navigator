@@ -24,4 +24,9 @@ public interface INavigatorUtils<U extends INavigatorUtils> {
     boolean canGoBack(FragmentManager fragmentManager);
 
     boolean canGoBackToSpecificPoint(String tag, int container, FragmentManager fragmentManager);
+
+    String getActualTag();
+
+    boolean isActualShowing(String tag);
+
 };
