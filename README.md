@@ -33,10 +33,11 @@ dependencies {
 }
 ```
 
-Wiki
+How to use
 ========
 
-  * Browse the [WIKI](https://bitbucket.org/fingerlinks/navigator/wiki/Home)
+  * Browse the [wiki](https://bitbucket.org/fingerlinks/navigator/wiki/Home)
+  * Browse the [sample](https://bitbucket.org/fingerlinks/navigator/src/8ee747dec5c5d711dfa1ceb8ea3b969ee469c231/sample/?at=master)
 
 App using Navigator
 =======
