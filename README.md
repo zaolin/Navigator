@@ -12,6 +12,27 @@ Features
   * Pass data and receive result between two fragments.
   * Custom transform animation.
 
+Install
+========
+
+Add our maven repository in your gradle
+
+```
+repositories {
+    maven {
+        url 'http://dl.bintray.com/dev-fingerlinks/maven'
+    }
+}
+```
+
+And add che compile
+
+```
+dependencies {
+    compile 'org.fingerlinks.mobile.android:Navigator:0.0.5'
+}
+```
+
 Wiki
 ========
 
