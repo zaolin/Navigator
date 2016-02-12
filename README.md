@@ -38,7 +38,7 @@ Wiki
 
   * Browse the [WIKI](https://bitbucket.org/fingerlinks/navigator/wiki/Home)
 
-App using Header View
+App using Navigator
 =======
 
   * [Parcheggiatori](https://play.google.com/store/apps/details?id=org.fingerlinks.mobile.android.iparcheggiatori)
