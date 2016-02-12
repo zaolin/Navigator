@@ -1,5 +1,6 @@
 package org.fingerlinks.mobile.android.navigator.builder;
 
+import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
@@ -29,4 +30,8 @@ public interface INavigatorUtils<U extends INavigatorUtils> {
 
     boolean isActualShowing(String tag);
 
-};
+    void finishWithAnimation();
+
+    void finishWithAnimation(int enter, int exit);
+
+}

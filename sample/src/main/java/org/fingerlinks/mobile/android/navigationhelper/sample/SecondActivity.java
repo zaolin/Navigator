@@ -31,7 +31,7 @@ public class SecondActivity extends AppCompatActivity {
                 .animation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down) //Add custom animation
                 .tag("HOME_FRAGMENT")
                 .addToBackStack() //add backstack
-                .add() //CommitType
+                .replace() //CommitType
                 .commit(); //commit operation
 
     }
@@ -76,6 +76,8 @@ public class SecondActivity extends AppCompatActivity {
                 Toast.makeText(SecondActivity.this, _ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }*/
             NavigatorHelper.with(SecondActivity.this).goBackTo("fragment_4");
+            Navigator.with(SecondActivity.this).utils()
+                    .goBackToSpecificPoint("fragment_4");
         }
 
         if (id == R.id.action_go_to_home) {
@@ -100,9 +102,15 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (Navigator.with(SecondActivity.this).utils().canGoBack(getSupportFragmentManager())) {
+            Navigator.with(SecondActivity.this)
+                    .utils()
+                    .goToPreviousBackStack();
+            Navigator.with(SecondActivity.this)
+                    .utils()
+                    .getActualTag();
             super.onBackPressed();
         } else {
-            finish();
+            Navigator.with(SecondActivity.this).utils().finishWithAnimation();
         }
     }
 }

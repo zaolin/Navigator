@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import org.fingerlinks.mobile.android.navigator.BuildConfig;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
+import org.fingerlinks.mobile.android.navigator.R;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
 import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 
@@ -34,16 +35,14 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
      * @param message specific exit message
      */
     public void confirmExitWithMessage(int message) {
-        confirmExitWithMessage(
-                mContextReference.getContext().getResources().getString(message), -1);
+        confirmExitWithMessage(mContextReference.getContext().getResources().getString(message), -1);
     }
 
     /**
      * @param message specific exit message
      */
     public void confirmExitWithMessage(String message) {
-        confirmExitWithMessage(
-                message, -1);
+        confirmExitWithMessage(message, -1);
     }
 
     /**
@@ -94,7 +93,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
 
     /**
      * @param tag point to return
-     * @throws NavigatorException  navigator specific error
+     * @throws NavigatorException navigator specific error
      */
     public void goBackToSpecificPoint(String tag) throws NavigatorException {
         FragmentManager fragmentManager = ((FragmentActivity)mContextReference.getContext()).getSupportFragmentManager();
@@ -105,14 +104,10 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
                 if (!tag.equalsIgnoreCase(fragmentList.get(i).getName())) {
                     fragmentManager.popBackStack();
                 }
-                //else {
-                //    listStep.add(tag);
-                //    return;
-                //}
             }
         } else {
             Log.e(TAG, "no fragment found");
-            String message = "Fragment with TAG[" + tag + "] not found into backstack entry";
+            String message = "Fragment with TAG[" + tag + "] not found into back stack entry";
             throw new NavigatorException(message);
         }
     }
@@ -163,14 +158,34 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
         return fragmentList;
     }
 
+    /**
+     * @return tag of fragment that is actually visible, return null if no fragment are added in back stack
+     */
     public String getActualTag() {
         List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
+        if (fragmentList == null || fragmentList.size() == 0) {
+            return null;
+        }
         return fragmentList.get(fragmentList.size() - 1).getName();
     }
 
+    /**
+     * @param tag fragment tag
+     * @return true if fragment is actual visible, otherwise false
+     */
     public boolean isActualShowing(String tag) {
         List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
         return fragmentList.get(fragmentList.size() - 1).getName().equals(tag);
+    }
+
+    public void finishWithAnimation(int enter, int exit) {
+        Activity activity = ((Activity) mContextReference.getContext());
+        activity.finish();
+        activity.overridePendingTransition(enter, exit);
+    }
+
+    public void finishWithAnimation() {
+        finishWithAnimation(R.anim.anim_window_out, R.anim.anim_window_in);
     }
 
     private static long lastPressTime = 0;

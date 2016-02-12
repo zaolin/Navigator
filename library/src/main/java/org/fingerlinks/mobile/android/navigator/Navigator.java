@@ -50,4 +50,5 @@ public class Navigator {
     }
 
     private NavigatorBean mNavBean;
-};
+
+}
