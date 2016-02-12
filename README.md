@@ -38,6 +38,13 @@ Wiki
 
   * Browse the [WIKI](https://bitbucket.org/fingerlinks/navigator/wiki/Home)
 
+App using Header View
+=======
+
+  * [Parcheggiatori](https://play.google.com/store/apps/details?id=org.fingerlinks.mobile.android.iparcheggiatori)
+  * [Joboxes](https://play.google.com/store/apps/details?id=org.fingerlinks.mobile.android.joboxes)
+  * [Guida per l'asta perfetta 2015](https://play.google.com/store/apps/details?id=it.quadronica.guida_asta_fantagazzetta)
+
 License
 =======
 
