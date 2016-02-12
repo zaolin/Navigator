@@ -12,23 +12,15 @@ Features
   * Pass data and receive result between two fragments.
   * Custom transform animation.
 
+Wiki
+========
 
-Usage
-=====
-
-1. Navigator
-
-
-   ```
-
-2. Install Navigator
-
-
+  * Browse the [WIKI](https://bitbucket.org/fingerlinks/navigator/wiki/Home)
 
 License
 =======
 
-    Copyright 2014 Fingerlinks
+    Copyright 2016 Fingerlinks
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -41,6 +33,3 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
-
-[Sample]: https://----
