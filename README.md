@@ -7,7 +7,7 @@ Navigator is a library allows you easily develop an Android application which on
 Features
 ========
 
-  * Check and controll BackStack
+  * Check and controll back stack
   * Pass data and receive result between two activity.
   * Pass data and receive result between two fragments.
   * Custom transform animation.
