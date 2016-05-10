@@ -103,6 +103,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
             for (int i = 0; i < fragmentList.size(); i++) {
                 if (!tag.equalsIgnoreCase(fragmentList.get(i).getName())) {
                     fragmentManager.popBackStack();
+                } else {
                     break;
                 }
             }
