@@ -1,6 +1,8 @@
 Navigator
 ==============
 
+[ ![Download](https://api.bintray.com/packages/dev-fingerlinks/maven/Navigator/images/download.svg) ](https://bintray.com/dev-fingerlinks/maven/Navigator/_latestVersion)
+
 Navigator is a library allows you easily develop an Android application which only navigated by Fragments.
 
 
