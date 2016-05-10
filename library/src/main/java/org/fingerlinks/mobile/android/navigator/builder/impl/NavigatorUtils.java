@@ -103,6 +103,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
             for (int i = 0; i < fragmentList.size(); i++) {
                 if (!tag.equalsIgnoreCase(fragmentList.get(i).getName())) {
                     fragmentManager.popBackStack();
+                    break;
                 }
             }
         } else {
@@ -185,7 +186,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     public void finishWithAnimation() {
-        finishWithAnimation(R.anim.anim_window_out, R.anim.anim_window_in);
+        finishWithAnimation(R.anim.view_flipper_transition_in_right, R.anim.view_flipper_transition_out_right);
     }
 
     private static long lastPressTime = 0;

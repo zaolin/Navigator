@@ -4,13 +4,13 @@ apply plugin: 'bintray-release'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 23
-        versionCode 5
-        versionName "0.0.5"
+        versionCode 6
+        versionName "0.0.6"
     }
     buildTypes {
         release {
@@ -27,9 +27,9 @@ publish {
     userOrg = 'dev-fingerlinks'
     groupId = 'org.fingerlinks.mobile.android'
     artifactId = 'Navigator'
-    publishVersion = '0.0.5'
+    publishVersion = '0.0.6'
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.android.support:support-v4:23.3.0'
 }

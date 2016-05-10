@@ -63,7 +63,8 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
                 default:
                     ((Activity)mContextReference.getContext()).
                             overridePendingTransition(
-                                    R.anim.anim_window_in, R.anim.anim_window_out);
+                                    R.anim.view_flipper_transition_in_left,
+                                    R.anim.view_flipper_transition_out_left);
                     break;
             }
         }
