@@ -2,11 +2,11 @@ package org.fingerlinks.mobile.android.navigationhelper.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import org.fingerlinks.mobile.android.navigator.Navigator;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
     }
 
     @Override
@@ -24,32 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_new_activity) {
-            Bundle bundle = new Bundle();
-            bundle.putString("TITLE", "Title from bundle");
-
-            /**
-             * Activity example
-             */
-            Navigator
-                .with(MainActivity.this)
-                .build() //Enter in navigation mode
-                .goTo(SecondActivity.class, bundle) //set destination and Bundle data
-                //.animation(R.anim.slide_in_from_up, R.anim.slide_out_right) //Add default animation
-                    .animation()
-                    .addRequestCode(9001) //set REQUEST_CODE
-                .commit(); //Execute startActivity -- startActivityForResult
-
-            /*NavigatorHelper
-                    .with(MainActivity.this)
-                    .goTo(SecondActivity.class, bundle)
-                    .animation()
-                    .commit();*/
-            return true;
-        }
-        if (id == R.id.action_debug) {
-            Navigator.with(MainActivity.this).utils().canGoBackToSpecificPoint("", R.id.container, getSupportFragmentManager());
+        switch (item.getItemId()) {
+            case R.id.action_new_activity:
+                Bundle bundle = new Bundle();
+                bundle.putString("TITLE", "Title from bundle");
+                Navigator.with(MainActivity.this)
+                        .build() //Enter in navigation mode
+                        .goTo(SecondActivity.class, bundle) //set destination and Bundle data
+                        .animation()
+                        .commit(); //Execute startActivity -- startActivityForResult
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -61,4 +46,4 @@ public class MainActivity extends AppCompatActivity {
                 .confirmExitWithMessage("Press again to exit!");
     }
 
-};
+}

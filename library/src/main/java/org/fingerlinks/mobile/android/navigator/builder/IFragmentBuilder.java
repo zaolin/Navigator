@@ -6,20 +6,17 @@ package org.fingerlinks.mobile.android.navigator.builder;
 public interface IFragmentBuilder<F extends IFragmentBuilder> {
 
     /**
-     *
      * @param tag
      * @return
      */
     F tag(String tag);
 
     /**
-     *
      * @return
      */
     Builders.Any.N replace();
 
     /**
-     *
      * @return
      */
     Builders.Any.N add();
@@ -30,14 +27,12 @@ public interface IFragmentBuilder<F extends IFragmentBuilder> {
     F animation();
 
     /**
-     *
      * @param enter
      * @param exit
      */
     F animation(int enter, int exit);
 
     /**
-     *
      * @param enter
      * @param exit
      * @param popEnter
@@ -47,8 +42,8 @@ public interface IFragmentBuilder<F extends IFragmentBuilder> {
     F animation(int enter, int exit, int popEnter, int popExit);
 
     /**
-     *
      * @return
      */
     F addToBackStack();
-};
+
+}

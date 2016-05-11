@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.fingerlinks.mobile.android.navigator.AnimationEnum;
 import org.fingerlinks.mobile.android.navigator.BuildConfig;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.R;
@@ -46,7 +47,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     /**
-     * @param message specific exit message
+     * @param message             specific exit message
      * @param doublePressInterval duration time between message
      */
     public void confirmExitWithMessage(int message, long doublePressInterval) {
@@ -57,19 +58,20 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
 
     /**
      * Generate Toast for confirm user exit
-     * @param message specific exit message
+     *
+     * @param message             specific exit message
      * @param doublePressInterval duration time between message
      */
     public void confirmExitWithMessage(String message, long doublePressInterval) {
 
-        if(doublePressInterval == -1) {
+        if (doublePressInterval == -1) {
             doublePressInterval = DOUBLE_PRESS_INTERVAL;
         }
         Toast.makeText(mContextReference.getContext(), message, Toast.LENGTH_SHORT).show();
         long pressTime = System.currentTimeMillis();
         if ((pressTime - lastPressTime) <= doublePressInterval) {
             lastPressTime = 0;
-            ((Activity)mContextReference.getContext()).finish();
+            ((Activity) mContextReference.getContext()).finish();
             Log.e(TAG, "nullify mContextReference");
             mContextReference = null;
 
@@ -79,10 +81,11 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
 
     /**
      * Return to previous point
+     *
      * @throws NavigatorException navigator specific error
      */
     public void goToPreviousBackStack() throws NavigatorException {
-        FragmentManager fragmentManager = ((FragmentActivity)mContextReference.getContext())
+        FragmentManager fragmentManager = ((FragmentActivity) mContextReference.getContext())
                 .getSupportFragmentManager();
         if (canGoBack(fragmentManager)) {
             fragmentManager.popBackStack();
@@ -96,7 +99,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
      * @throws NavigatorException navigator specific error
      */
     public void goBackToSpecificPoint(String tag) throws NavigatorException {
-        FragmentManager fragmentManager = ((FragmentActivity)mContextReference.getContext()).getSupportFragmentManager();
+        FragmentManager fragmentManager = ((FragmentActivity) mContextReference.getContext()).getSupportFragmentManager();
         if (fragmentManager.findFragmentByTag(tag) != null) {
             List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
             Collections.reverse(fragmentList);
@@ -123,9 +126,8 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     /**
-     *
-     * @param tag point to return
-     * @param container id container
+     * @param tag             point to return
+     * @param container       id container
      * @param fragmentManager variable contain fragment stack
      * @return true if is possible return to tag param
      */
@@ -148,7 +150,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     private List<FragmentManager.BackStackEntry> fragmentList() {
-        FragmentManager fragmentManager = ((FragmentActivity)mContextReference.getContext()).getSupportFragmentManager();
+        FragmentManager fragmentManager = ((FragmentActivity) mContextReference.getContext()).getSupportFragmentManager();
         List<FragmentManager.BackStackEntry> fragmentList = new ArrayList<>();
         int size = fragmentManager.getBackStackEntryCount();
         for (int i = 0; i < size; i++) {
@@ -186,11 +188,23 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
         activity.overridePendingTransition(enter, exit);
     }
 
+    public void finishWithAnimation(AnimationEnum animation) {
+        switch (animation) {
+            case VERTICAL:
+                finishWithAnimation(R.anim.fade_in, R.anim.slide_out_to_bottom);
+                break;
+            case HORIZONTAL:
+                finishWithAnimation(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+                break;
+        }
+    }
+
     public void finishWithAnimation() {
-        finishWithAnimation(R.anim.view_flipper_transition_in_right, R.anim.view_flipper_transition_out_right);
+        finishWithAnimation(AnimationEnum.HORIZONTAL);
     }
 
     private static long lastPressTime = 0;
     private final static String TAG = NavigatorUtils.class.getName();
     private static final long DOUBLE_PRESS_INTERVAL = 5 * 1000;
+
 }

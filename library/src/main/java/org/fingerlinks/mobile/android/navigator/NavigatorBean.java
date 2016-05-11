@@ -21,8 +21,10 @@ public class NavigatorBean implements Serializable {
     private int[] animations = new int[0];
     private CommitTypeEnum type;
     private int requestCode;
+    private AnimationEnum animationEnum;
 
-    protected NavigatorBean() {}
+    protected NavigatorBean() {
+    }
 
     public Intent getIntent() {
         return intent;
@@ -106,5 +108,13 @@ public class NavigatorBean implements Serializable {
 
     public void setRequestCode(int requestCode) {
         this.requestCode = requestCode;
+    }
+
+    public AnimationEnum getAnimationEnum() {
+        return animationEnum;
+    }
+
+    public void setAnimationEnum(AnimationEnum animationEnum) {
+        this.animationEnum = animationEnum;
     }
 }

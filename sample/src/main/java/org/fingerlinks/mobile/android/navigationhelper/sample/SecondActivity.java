@@ -3,13 +3,12 @@ package org.fingerlinks.mobile.android.navigationhelper.sample;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.fingerlinks.mobile.android.navigator.Navigator;
-import org.fingerlinks.mobile.android.navigator.NavigatorException;
-import org.fingerlinks.mobile.android.navigator.NavigatorHelper;
 import org.fingerlinks.mobile.android.navigator.utils.Constant;
 
 public class SecondActivity extends AppCompatActivity {
@@ -21,19 +20,17 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         Bundle bundle = getIntent().getBundleExtra(Constant.BUNDLE);
         setTitle(bundle.getString("TITLE"));
         Fragment fragment = new SecondFragment();
-
         Navigator.with(SecondActivity.this)
                 .build() //Enter in navigation mode
                 .goTo(fragment, bundle, R.id.container)
-                .animation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down) //Add custom animation
                 .tag("HOME_FRAGMENT")
                 .addToBackStack() //add backstack
                 .replace() //CommitType
                 .commit(); //commit operation
-
     }
 
     @Override
@@ -44,57 +41,45 @@ public class SecondActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_add_fragment) {
-            Fragment fragment = new SecondTestFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("TEST", "fragment number " + numFragment);
-
-            Navigator.with(SecondActivity.this)
-                    .build() //Enter in navigation mode
-                    .goTo(fragment, bundle, R.id.container)
-                    .animation(R.anim.abc_slide_out_bottom, R.anim.slide_down, R.anim.abc_slide_out_bottom, R.anim.slide_down) //Add custom animation
-                    .tag("fragment_" + numFragment)
-                    .addToBackStack() //add backstack
-                    .add() //CommitType
-                    .commit(); //commit operation
-
-            numFragment++;
-            return true;
-        }
-        if (id == R.id.action_debug) {
-            //NavigatorHelper.with(SecondActivity.this).printDebug();
-        }
-        if (id == R.id.action_close) {
-            finish();
-        }
-        if (id == R.id.action_go_to) {
-            /*try {
-                Navigator.with(SecondActivity.this).utils()
-                        .goBackToSpecificPoint("fragment_4");
-            } catch (NavigatorException _ex) {
-                Toast.makeText(SecondActivity.this, _ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }*/
-            NavigatorHelper.with(SecondActivity.this).goBackTo("fragment_4");
-            Navigator.with(SecondActivity.this).utils()
-                    .goBackToSpecificPoint("fragment_4");
-        }
-
-        if (id == R.id.action_go_to_home) {
-            try {
-                Navigator
-                        .with(SecondActivity.this)
-                        .utils()
-                        .goBackToSpecificPoint("HOME_FRAGMENT");
-            } catch (NavigatorException _ex) {
-                Toast.makeText(SecondActivity.this, "Can't go to home fragment", Toast.LENGTH_SHORT).show();
-            }
-        }
-        if (id == R.id.action_back) {
-
-            Toast.makeText(SecondActivity.this, "Can go back? " +
-                    Navigator.with(SecondActivity.this).utils()
-                            .canGoBack(getSupportFragmentManager()), Toast.LENGTH_SHORT).show();
+        switch (item.getItemId()) {
+            case R.id.action_add_fragment:
+                Bundle bundle = new Bundle();
+                bundle.putString("TEST", "fragment number " + numFragment);
+                Navigator.with(SecondActivity.this)
+                        .build()
+                        .goTo(Fragment.instantiate(SecondActivity.this, SecondTestFragment.class.getName()),
+                                bundle,
+                                R.id.container)
+                        .addToBackStack()
+                        .tag("fragment_" + numFragment)
+                        .animation()
+                        .add()
+                        .commit();
+                numFragment++;
+                break;
+            case R.id.action_close:
+                Navigator.with(SecondActivity.this).utils().finishWithAnimation();
+                break;
+            case R.id.action_go_to:
+                if (Navigator.with(SecondActivity.this).utils().canGoBackToSpecificPoint("fragment_4", R.id.container, getSupportFragmentManager())) {
+                    Navigator.with(SecondActivity.this).utils().goBackToSpecificPoint("fragment_4");
+                } else {
+                    Toast.makeText(SecondActivity.this, "Can't go to fragment_4", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.action_go_to_home:
+                if (Navigator.with(SecondActivity.this).utils().canGoBackToSpecificPoint("HOME_FRAGMENT", R.id.container, getSupportFragmentManager())) {
+                    Navigator.with(SecondActivity.this)
+                            .utils()
+                            .goBackToSpecificPoint("HOME_FRAGMENT");
+                } else {
+                    Toast.makeText(SecondActivity.this, "Can't go HOME_FRAGMENT", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.action_back:
+                boolean canGoBack = Navigator.with(SecondActivity.this).utils().canGoBack(getSupportFragmentManager());
+                Toast.makeText(SecondActivity.this, "Can go back? " + canGoBack, Toast.LENGTH_SHORT).show();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -105,10 +90,6 @@ public class SecondActivity extends AppCompatActivity {
             Navigator.with(SecondActivity.this)
                     .utils()
                     .goToPreviousBackStack();
-            Navigator.with(SecondActivity.this)
-                    .utils()
-                    .getActualTag();
-            super.onBackPressed();
         } else {
             Navigator.with(SecondActivity.this).utils().finishWithAnimation();
         }

@@ -3,9 +3,9 @@ package org.fingerlinks.mobile.android.navigator.builder.impl;
 import android.app.Activity;
 import android.support.v4.app.FragmentTransaction;
 
-import org.fingerlinks.mobile.android.navigator.R;
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
+import org.fingerlinks.mobile.android.navigator.R;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
 import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 
@@ -29,11 +29,11 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
     @Override
     public void commit() {
         String alive = mContextReference.isAlive();
-        if(null != alive) {
+        if (null != alive) {
             throw new NavigatorException("Building request with dead context: " + alive);
         }
 
-        if(mCommitIsForFragment) {
+        if (mCommitIsForFragment) {
             commitFragment();
         } else {
             commitActivity();
@@ -42,8 +42,8 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
 
     private void commitActivity() {
 
-        if(mNavigatorBean.getRequestCode() != -1) {
-            ((Activity)mContextReference.getContext()).
+        if (mNavigatorBean.getRequestCode() != -1) {
+            ((Activity) mContextReference.getContext()).
                     startActivityForResult(
                             mNavigatorBean.getIntent(),
                             mNavigatorBean.getRequestCode());
@@ -52,31 +52,39 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
                     startActivity(mNavigatorBean.getIntent());
         }
         if (mNavigatorBean.isAnimation()) {
-            int _length = (mNavigatorBean.getAnimations() == null)?0:mNavigatorBean.getAnimations().length;
-            switch(_length) {
+            int _length = (mNavigatorBean.getAnimations() == null) ? 0 : mNavigatorBean.getAnimations().length;
+            switch (_length) {
                 case 2:
-                    ((Activity)mContextReference.getContext()).
+                    ((Activity) mContextReference.getContext()).
                             overridePendingTransition(
                                     mNavigatorBean.getAnimations()[0],
                                     mNavigatorBean.getAnimations()[1]);
                     break;
                 default:
-                    ((Activity)mContextReference.getContext()).
-                            overridePendingTransition(
-                                    R.anim.view_flipper_transition_in_left,
-                                    R.anim.view_flipper_transition_out_left);
+                    switch (mNavigatorBean.getAnimationEnum()) {
+                        case HORIZONTAL:
+                            ((Activity) mContextReference.getContext()).
+                                    overridePendingTransition(
+                                            R.anim.slide_in_from_right,
+                                            R.anim.slide_out_to_left);
+                            break;
+                        case VERTICAL:
+                            ((Activity) mContextReference.getContext()).
+                                    overridePendingTransition(
+                                            R.anim.slide_in_from_bottom,
+                                            R.anim.fade_out);
+                            break;
+                    }
                     break;
             }
         }
     }
 
     private void commitFragment() {
-        //listStep.add(mNavBean.getTag());
-
         FragmentTransaction fragmentTransaction = mNavigatorBean.getFragmentManager().beginTransaction();
         if (mNavigatorBean.isAnimation()) {
-            int _length = (mNavigatorBean.getAnimations() == null)?0:mNavigatorBean.getAnimations().length;
-            switch(_length) {
+            int _length = (mNavigatorBean.getAnimations() == null) ? 0 : mNavigatorBean.getAnimations().length;
+            switch (_length) {
                 case 2:
                     fragmentTransaction.setCustomAnimations(
                             mNavigatorBean.getAnimations()[0],
@@ -122,4 +130,5 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
         }
         fragmentTransaction.commit();
     }
-};
+
+}

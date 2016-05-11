@@ -21,6 +21,7 @@ public class Navigator {
 
     /**
      * Get the default Navigator object instance and begin building a request
+     *
      * @param context
      * @return
      */
@@ -37,7 +38,9 @@ public class Navigator {
         return new GoToBuilder(ContextReference.fromContext(mContext), mNavBean);
     }
 
-    /*********************** private method ******************************************************/
+    /***********************
+     * private method
+     ******************************************************/
 
     private static Navigator getInstance(Context context) {
         if (context == null)
@@ -46,7 +49,7 @@ public class Navigator {
         //if(mInstance == null) {
         //    mInstance = new Navigator(context);
         //}
-    return new Navigator(context); //mInstance;
+        return new Navigator(context); //mInstance;
     }
 
     private NavigatorBean mNavBean;

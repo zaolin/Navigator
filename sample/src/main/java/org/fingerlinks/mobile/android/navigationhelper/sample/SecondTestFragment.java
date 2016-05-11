@@ -17,4 +17,5 @@ public class SecondTestFragment extends Fragment {
         textView.setText(bundle.getString("TEST"));
         return view;
     }
+
 }

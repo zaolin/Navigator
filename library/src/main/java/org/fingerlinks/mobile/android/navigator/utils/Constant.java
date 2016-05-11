@@ -5,6 +5,6 @@ package org.fingerlinks.mobile.android.navigator.utils;
  */
 public class Constant {
 
-    public final static String BUNDLE = Constant.class.getName()+".bundle";
+    public final static String BUNDLE = Constant.class.getName() + ".bundle";
 
 }

@@ -11,4 +11,5 @@ public interface INavigatorBuilder<N extends INavigatorBuilder> {
      *
      */
     void commit();
-};
+
+}

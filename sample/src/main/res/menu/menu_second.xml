@@ -1,7 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="org.fingerlinks.mobile.android.navigationhelper.sample.SecondActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/action_add_fragment"
         android:orderInCategory="100"
@@ -16,11 +15,6 @@
         android:id="@+id/action_go_to_home"
         android:orderInCategory="102"
         android:title="@string/action_go_to_home"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_debug"
-        android:orderInCategory="103"
-        android:title="@string/action_debug"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_back"

@@ -15,7 +15,6 @@ public interface IGoToBuilder<A extends IActivityBuilder, F extends IFragmentBui
     A goTo(Class<?> activity);
 
     /**
-     *
      * @param activity
      * @param bundle
      * @return
@@ -23,7 +22,6 @@ public interface IGoToBuilder<A extends IActivityBuilder, F extends IFragmentBui
     A goTo(Class<?> activity, Bundle bundle);
 
     /**
-     *
      * @param fragment
      * @param container
      * @return
@@ -31,11 +29,11 @@ public interface IGoToBuilder<A extends IActivityBuilder, F extends IFragmentBui
     F goTo(Fragment fragment, int container);
 
     /**
-     *
      * @param fragment
      * @param bundle
      * @param container
      * @return
      */
     F goTo(Fragment fragment, Bundle bundle, int container);
-};
+
+}

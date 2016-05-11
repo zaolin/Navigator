@@ -35,7 +35,7 @@ public class GoToBuilder extends BaseBuilder implements Builders.Any.G {
         }
         mNavigatorBean.setIntent(intent);
         //listStep.add(activity.getName());
-    return new ActivityBuilder(mContextReference, mNavigatorBean);
+        return new ActivityBuilder(mContextReference, mNavigatorBean);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class GoToBuilder extends BaseBuilder implements Builders.Any.G {
         mNavigatorBean.setFragment(fragment);
         mNavigatorBean.setFragmentManager(fragmentManager);
         mNavigatorBean.setContainer(container);
-    return new FragmentBuilder(mContextReference, mNavigatorBean);
+        return new FragmentBuilder(mContextReference, mNavigatorBean);
     }
 
-};
+}

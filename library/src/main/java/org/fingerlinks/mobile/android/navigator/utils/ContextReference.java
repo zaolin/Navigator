@@ -16,6 +16,7 @@ import java.util.List;
  * Created by koush on 4/15/14.
  */
 public abstract class ContextReference<T> extends WeakReference<T> {
+
     ContextReference(T t) {
         super(t);
     }
@@ -47,11 +48,11 @@ public abstract class ContextReference<T> extends WeakReference<T> {
         static String isAlive(Service candidate) {
             if (candidate == null)
                 return "Service reference null";
-            ActivityManager manager = (ActivityManager)candidate.getSystemService(Context.ACTIVITY_SERVICE);
+            ActivityManager manager = (ActivityManager) candidate.getSystemService(Context.ACTIVITY_SERVICE);
             List<ActivityManager.RunningServiceInfo> services = manager.getRunningServices(Integer.MAX_VALUE);
             if (services == null)
                 return "Could not retrieve services from service manager";
-            for (ActivityManager.RunningServiceInfo service: services) {
+            for (ActivityManager.RunningServiceInfo service : services) {
                 if (candidate.getClass().getName().equals(service.service.getClassName())) {
                     return null;
                 }
@@ -163,9 +164,9 @@ public abstract class ContextReference<T> extends WeakReference<T> {
 
     public static ContextReference fromContext(Context context) {
         if (context instanceof Service)
-            return new ServiceContextReference((Service)context);
+            return new ServiceContextReference((Service) context);
         if (context instanceof Activity)
-            return new ActivityContextReference((Activity)context);
+            return new ActivityContextReference((Activity) context);
 
         return new NormalContextReference<Context>(context) {
             @Override
@@ -179,5 +180,6 @@ public abstract class ContextReference<T> extends WeakReference<T> {
     }
 
     public abstract String isAlive();
+
     public abstract Context getContext();
 }

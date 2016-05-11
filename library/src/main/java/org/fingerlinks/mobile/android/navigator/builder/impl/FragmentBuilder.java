@@ -35,7 +35,7 @@ public class FragmentBuilder extends BaseBuilder implements Builders.Any.F {
 
     @Override
     public Builders.Any.F animation() {
-        if(mNavigatorBean == null) {
+        if (mNavigatorBean == null) {
             throw new NavigatorException("NavBean not initialized");
         }
         mNavigatorBean.setAnimation(true);
@@ -72,4 +72,5 @@ public class FragmentBuilder extends BaseBuilder implements Builders.Any.F {
     private void setCommitType(CommitTypeEnum commitType) {
         mNavigatorBean.setType(commitType);
     }
-};
+
+}

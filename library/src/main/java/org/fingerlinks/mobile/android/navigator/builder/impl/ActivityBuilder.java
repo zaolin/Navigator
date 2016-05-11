@@ -1,5 +1,6 @@
 package org.fingerlinks.mobile.android.navigator.builder.impl;
 
+import org.fingerlinks.mobile.android.navigator.AnimationEnum;
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;
 import org.fingerlinks.mobile.android.navigator.builder.Builders;
@@ -11,7 +12,7 @@ import org.fingerlinks.mobile.android.navigator.utils.ContextReference;
 public class ActivityBuilder extends BaseBuilder implements Builders.Any.A {
 
     public ActivityBuilder(ContextReference context, NavigatorBean navigatorBean) throws NavigatorException {
-       super(context, navigatorBean);
+        super(context, navigatorBean);
     }
 
     @Override
@@ -26,9 +27,16 @@ public class ActivityBuilder extends BaseBuilder implements Builders.Any.A {
 
     @Override
     public Builders.Any.A animation() {
-        if(mNavigatorBean == null) {
+        animation(AnimationEnum.HORIZONTAL);
+        return this;
+    }
+
+    @Override
+    public Builders.Any.A animation(AnimationEnum animation) {
+        if (mNavigatorBean == null) {
             throw new NavigatorException("NavBean not initialized");
         }
+        mNavigatorBean.setAnimationEnum(animation);
         mNavigatorBean.setAnimation(true);
         return this;
     }
@@ -43,4 +51,4 @@ public class ActivityBuilder extends BaseBuilder implements Builders.Any.A {
     }
 
     private final static String TAG = ActivityBuilder.class.getName();
-};
+}

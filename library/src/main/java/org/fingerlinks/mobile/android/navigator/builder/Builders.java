@@ -9,19 +9,24 @@ public interface Builders {
 
 
         // restrict to fragment builder
-        interface F extends IFragmentBuilder<F> { }
+        interface F extends IFragmentBuilder<F> {
+        }
 
         // restrict to activity builder
-        interface A extends IActivityBuilder<A> { }
+        interface A extends IActivityBuilder<A> {
+        }
 
         // restrict to goto builder
-        interface G extends IGoToBuilder<A, F> { }
+        interface G extends IGoToBuilder<A, F> {
+        }
 
         // generic navigator buider
-        interface U extends INavigatorUtils<U> {}
+        interface U extends INavigatorUtils<U> {
+        }
 
         // generic navigator buider
-        interface N extends INavigatorBuilder<N> {}
+        interface N extends INavigatorBuilder<N> {
+        }
     }
 
-};
+}

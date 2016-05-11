@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--translate
+<?xml version="1.0" encoding="utf-8"?><!--translate
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:fromYDelta="-100%p"
     android:toYDelta="0%p"
@@ -10,11 +9,9 @@
     android:fromYDelta="-100.0%p" android:toYDelta="0.0"
     xmlns:android="http://schemas.android.com/apk/res/android" /  -->
 
-<set
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+<set xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <translate
-        android:duration="@integer/anim_speed"
+    <translate android:duration="@integer/anim_speed"
         android:fromYDelta="-100.0%p"
         android:toYDelta="0.0"
         android:fillBefore="true"

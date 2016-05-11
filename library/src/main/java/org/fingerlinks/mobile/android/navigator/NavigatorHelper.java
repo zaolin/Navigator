@@ -12,19 +12,17 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.fingerlinks.mobile.android.navigator.BuildConfig;
-import org.fingerlinks.mobile.android.navigator.R;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * Encapsulates navigation operations between fragments or activity
- * @deprecated  Migrate to Builders pattern</br>
- *              {will be removed in version 1.1} </br>
- *              use {@link Navigator} instead like this:
  *
+ * @deprecated Migrate to Builders pattern</br>
+ * {will be removed in version 1.1} </br>
+ * use {@link Navigator} instead like this:
+ * <p>
  * <blockquote>
  * <pre>
  * Navigator
@@ -35,7 +33,6 @@ import java.util.List;
  *   .addRequestCode(9001) //set REQUEST_CODE
  *   .commit(); //Execute startActivity -- startActivityForResult
  * </pre></blockquote>
- *
  */
 @Deprecated()
 public class NavigatorHelper {
@@ -243,7 +240,7 @@ public class NavigatorHelper {
                     ((Activity) mContext).overridePendingTransition(mNavBean.getAnimations()[0], mNavBean.getAnimations()[1]);
                     break;
                 default:
-                    ((Activity) mContext).overridePendingTransition(R.anim.anim_window_in, R.anim.anim_window_out);
+                    ((Activity) mContext).overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_left);
                     break;
             }
         }
@@ -292,4 +289,4 @@ public class NavigatorHelper {
         }
         return fragmentList;
     }
-};
+}
