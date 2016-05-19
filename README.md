@@ -38,8 +38,8 @@ dependencies {
 How to use
 ========
 
-  * Browse the [wiki](https://bitbucket.org/fingerlinks/navigator/wiki/Home)
-  * Browse the [sample](https://bitbucket.org/fingerlinks/navigator/src/8ee747dec5c5d711dfa1ceb8ea3b969ee469c231/sample/?at=master)
+  * Browse the [wiki](https://github.com/fingerlinks/Navigator/wiki)
+  * Browse the [sample](https://github.com/fingerlinks/Navigator/tree/master/sample)
 
 App using Navigator
 =======
