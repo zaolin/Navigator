@@ -47,6 +47,10 @@ App using Navigator
   * [Parcheggiatori](https://play.google.com/store/apps/details?id=org.fingerlinks.mobile.android.iparcheggiatori)
   * [Joboxes](https://play.google.com/store/apps/details?id=org.fingerlinks.mobile.android.joboxes)
   * [Guida per l'asta perfetta 2015](https://play.google.com/store/apps/details?id=it.quadronica.guida_asta_fantagazzetta)
+  * [Material Qr](https://play.google.com/store/apps/details?id=qrreader.com.studios.it.qrreader)
+  * [Volo](https://play.google.com/store/apps/details?id=volo.tsc.it.volo)
+  * [Volo Oss](https://play.google.com/store/apps/details?id=volontario.volo.tsc.it.volontario)
+  * [Gespat](https://play.google.com/store/apps/details?id=gespat.tsc.it.gespat)
 
 License
 =======
