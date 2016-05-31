@@ -19,7 +19,7 @@ Install
 
 Add our maven repository in your gradle
 
-```
+```groovy
 repositories {
     maven {
         url 'http://dl.bintray.com/dev-fingerlinks/maven'
@@ -29,7 +29,7 @@ repositories {
 
 And add che compile
 
-```
+```groovy
 dependencies {
     compile 'org.fingerlinks.mobile.android:Navigator:0.1.2'
 }
