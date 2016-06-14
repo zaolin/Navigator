@@ -1,7 +1,7 @@
 Navigator
 ==============
 
-[ ![Download](https://api.bintray.com/packages/dev-fingerlinks/maven/Navigator/images/download.svg) ](https://bintray.com/dev-fingerlinks/maven/Navigator/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Navigator-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3638)
+[ ![Download](https://api.bintray.com/packages/dev-fingerlinks/maven/Navigator/images/download.svg) ](https://bintray.com/dev-fingerlinks/maven/Navigator/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Navigator-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3638) [![GitHub issues](https://img.shields.io/github/issues/fingerlinks/Navigator.svg)](https://github.com/fingerlinks/Navigator/issues) [![GitHub forks](https://img.shields.io/github/forks/fingerlinks/Navigator.svg)](https://github.com/fingerlinks/Navigator/network) [![GitHub stars](https://img.shields.io/github/stars/fingerlinks/Navigator.svg)](https://github.com/fingerlinks/Navigator/stargazers)
 
 Navigator is a library allows you easily develop an Android application which only navigated by Fragments.
 
