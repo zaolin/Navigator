@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.app.FragmentActivity;
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.text.TextUtils;
@@ -80,7 +80,7 @@ public class NavigatorHelper {
     }
 
     public NavigatorHelper goTo(Fragment fragment, Bundle bundle, int container) {
-        FragmentManager fragmentManager = ((FragmentActivity) mContext).getFragmentManager();
+        FragmentManager fragmentManager = ((Activity) mContext).getFragmentManager();
         if (bundle != null) {
             fragment.setArguments(bundle);
         }
@@ -176,7 +176,7 @@ public class NavigatorHelper {
     }
 
     public void goBackTo(String tag) throws NavigatorException {
-        FragmentManager fragmentManager = ((FragmentActivity) mContext).getFragmentManager();
+        FragmentManager fragmentManager = ((Activity) mContext).getFragmentManager();
         if (fragmentManager.findFragmentByTag(tag) != null) {
             List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
             Collections.reverse(fragmentList);
@@ -196,7 +196,7 @@ public class NavigatorHelper {
     }
 
     public void goBack() throws NavigatorException {
-        FragmentManager fragmentManager = ((FragmentActivity) mContext).getFragmentManager();
+        FragmentManager fragmentManager = ((Activity) mContext).getFragmentManager();
         if (canGoBack(fragmentManager)) {
             fragmentManager.popBackStack();
         }
@@ -240,7 +240,7 @@ public class NavigatorHelper {
                     ((Activity) mContext).overridePendingTransition(mNavBean.getAnimations()[0], mNavBean.getAnimations()[1]);
                     break;
                 default:
-                    ((Activity) mContext).overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_left);
+                    ((Activity) mContext).overridePendingTransition(R.animator.slide_in_from_left, R.animator.slide_out_to_left);
                     break;
             }
         }
@@ -259,7 +259,7 @@ public class NavigatorHelper {
                     fragmentTransaction.setCustomAnimations(mNavBean.getAnimations()[0], mNavBean.getAnimations()[1], mNavBean.getAnimations()[2], mNavBean.getAnimations()[3]);
                     break;
                 default:
-                    fragmentTransaction.setCustomAnimations(R.anim.view_flipper_transition_in_left, R.anim.view_flipper_transition_out_left, R.anim.view_flipper_transition_in_right, R.anim.view_flipper_transition_out_right);
+                    fragmentTransaction.setCustomAnimations(R.animator.view_flipper_transition_in_left, R.animator.view_flipper_transition_out_left, R.animator.view_flipper_transition_in_right, R.animator.view_flipper_transition_out_right);
                     break;
             }
         }
@@ -278,7 +278,7 @@ public class NavigatorHelper {
     }
 
     private List<FragmentManager.BackStackEntry> fragmentList() {
-        FragmentManager fragmentManager = ((FragmentActivity) mContext).getFragmentManager();
+        FragmentManager fragmentManager = ((Activity) mContext).getFragmentManager();
         List<FragmentManager.BackStackEntry> fragmentList = new ArrayList<>();
         int size = fragmentManager.getBackStackEntryCount();
         for (int i = 0; i < size; i++) {

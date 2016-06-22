@@ -3,7 +3,7 @@ package org.fingerlinks.mobile.android.navigator.builder.impl;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.app.FragmentActivity;
+import android.app.Activity;
 import android.app.FragmentManager;
 
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
@@ -46,7 +46,7 @@ public class GoToBuilder extends BaseBuilder implements Builders.Any.G {
 
     @Override
     public Builders.Any.F goTo(Fragment fragment, Bundle bundle, int container) {
-        FragmentManager fragmentManager = ((FragmentActivity) mContextReference.getContext()).getFragmentManager();
+        FragmentManager fragmentManager = ((Activity) mContextReference.getContext()).getFragmentManager();
         if (bundle != null) {
             fragment.setArguments(bundle);
         }

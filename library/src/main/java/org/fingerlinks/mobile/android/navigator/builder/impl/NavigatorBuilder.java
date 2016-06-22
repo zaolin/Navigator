@@ -65,14 +65,14 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
                         case HORIZONTAL:
                             ((Activity) mContextReference.getContext()).
                                     overridePendingTransition(
-                                            R.anim.slide_in_from_right,
-                                            R.anim.slide_out_to_left);
+                                            R.animator.slide_in_from_right,
+                                            R.animator.slide_out_to_left);
                             break;
                         case VERTICAL:
                             ((Activity) mContextReference.getContext()).
                                     overridePendingTransition(
-                                            R.anim.slide_in_from_bottom,
-                                            R.anim.fade_out);
+                                            R.animator.slide_in_from_bottom,
+                                            R.animator.fade_out);
                             break;
                     }
                     break;
@@ -99,10 +99,10 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
                     break;
                 default:
                     fragmentTransaction.setCustomAnimations(
-                            R.anim.view_flipper_transition_in_left,
-                            R.anim.view_flipper_transition_out_left,
-                            R.anim.view_flipper_transition_in_right,
-                            R.anim.view_flipper_transition_out_right);
+                            R.animator.view_flipper_transition_in_left,
+                            R.animator.view_flipper_transition_out_left,
+                            R.animator.view_flipper_transition_in_right,
+                            R.animator.view_flipper_transition_out_right);
                     break;
             }
         }

@@ -2,7 +2,7 @@ package org.fingerlinks.mobile.android.navigator.builder.impl;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentActivity;
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -85,7 +85,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
      * @throws NavigatorException navigator specific error
      */
     public void goToPreviousBackStack() throws NavigatorException {
-        FragmentManager fragmentManager = ((FragmentActivity) mContextReference.getContext())
+        FragmentManager fragmentManager = ((Activity) mContextReference.getContext())
                 .getFragmentManager();
         if (canGoBack(fragmentManager)) {
             fragmentManager.popBackStack();
@@ -99,7 +99,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
      * @throws NavigatorException navigator specific error
      */
     public void goBackToSpecificPoint(String tag) throws NavigatorException {
-        FragmentManager fragmentManager = ((FragmentActivity) mContextReference.getContext()).getFragmentManager();
+        FragmentManager fragmentManager = ((Activity) mContextReference.getContext()).getFragmentManager();
         if (fragmentManager.findFragmentByTag(tag) != null) {
             List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
             Collections.reverse(fragmentList);
@@ -150,7 +150,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     }
 
     private List<FragmentManager.BackStackEntry> fragmentList() {
-        FragmentManager fragmentManager = ((FragmentActivity) mContextReference.getContext()).getFragmentManager();
+        FragmentManager fragmentManager = ((Activity) mContextReference.getContext()).getFragmentManager();
         List<FragmentManager.BackStackEntry> fragmentList = new ArrayList<>();
         int size = fragmentManager.getBackStackEntryCount();
         for (int i = 0; i < size; i++) {
@@ -191,10 +191,10 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     public void finishWithAnimation(AnimationEnum animation) {
         switch (animation) {
             case VERTICAL:
-                finishWithAnimation(R.anim.fade_in, R.anim.slide_out_to_bottom);
+                finishWithAnimation(R.animator.fade_in, R.animator.slide_out_to_bottom);
                 break;
             case HORIZONTAL:
-                finishWithAnimation(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+                finishWithAnimation(R.animator.slide_in_from_left, R.animator.slide_out_to_right);
                 break;
         }
     }
