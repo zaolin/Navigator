@@ -1,13 +1,12 @@
 package org.fingerlinks.mobile.android.navigator;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -53,16 +52,6 @@ public class NavigatorHelper {
         }
         mInstance.initNavHelper(context);
         return mInstance;
-    }
-
-    public void printDebug() {
-        if (BuildConfig.DEBUG) {
-            Log.d(TAG, "--------------------------------------------------------");
-            Log.d(TAG, "list of step");
-            for (String step : listStep) {
-                Log.d(TAG, step);
-            }
-        }
     }
 
     public NavigatorHelper goTo(Class<?> activity, Bundle bundle) {
@@ -283,9 +272,6 @@ public class NavigatorHelper {
         int size = fragmentManager.getBackStackEntryCount();
         for (int i = 0; i < size; i++) {
             fragmentList.add(fragmentManager.getBackStackEntryAt(i));
-            if (BuildConfig.DEBUG) {
-                Log.d(TAG, "position: " + i + " name: " + fragmentManager.getBackStackEntryAt(i).getName());
-            }
         }
         return fragmentList;
     }
