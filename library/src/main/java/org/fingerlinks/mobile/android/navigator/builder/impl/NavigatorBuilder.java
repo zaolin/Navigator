@@ -1,7 +1,7 @@
 package org.fingerlinks.mobile.android.navigator.builder.impl;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentTransaction;
 
 import org.fingerlinks.mobile.android.navigator.NavigatorBean;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;

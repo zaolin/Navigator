@@ -1,6 +1,6 @@
 package org.fingerlinks.mobile.android.navigator.builder;
 
-import android.support.v4.app.FragmentManager;
+import android.app.FragmentManager;
 
 import org.fingerlinks.mobile.android.navigator.AnimationEnum;
 import org.fingerlinks.mobile.android.navigator.NavigatorException;

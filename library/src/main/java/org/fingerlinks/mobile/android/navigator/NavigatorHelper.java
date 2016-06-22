@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.app.Fragment;
+import android.app.FragmentActivity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -80,7 +80,7 @@ public class NavigatorHelper {
     }
 
     public NavigatorHelper goTo(Fragment fragment, Bundle bundle, int container) {
-        FragmentManager fragmentManager = ((FragmentActivity) mContext).getSupportFragmentManager();
+        FragmentManager fragmentManager = ((FragmentActivity) mContext).getFragmentManager();
         if (bundle != null) {
             fragment.setArguments(bundle);
         }
@@ -176,7 +176,7 @@ public class NavigatorHelper {
     }
 
     public void goBackTo(String tag) throws NavigatorException {
-        FragmentManager fragmentManager = ((FragmentActivity) mContext).getSupportFragmentManager();
+        FragmentManager fragmentManager = ((FragmentActivity) mContext).getFragmentManager();
         if (fragmentManager.findFragmentByTag(tag) != null) {
             List<FragmentManager.BackStackEntry> fragmentList = fragmentList();
             Collections.reverse(fragmentList);
@@ -196,7 +196,7 @@ public class NavigatorHelper {
     }
 
     public void goBack() throws NavigatorException {
-        FragmentManager fragmentManager = ((FragmentActivity) mContext).getSupportFragmentManager();
+        FragmentManager fragmentManager = ((FragmentActivity) mContext).getFragmentManager();
         if (canGoBack(fragmentManager)) {
             fragmentManager.popBackStack();
         }
@@ -278,7 +278,7 @@ public class NavigatorHelper {
     }
 
     private List<FragmentManager.BackStackEntry> fragmentList() {
-        FragmentManager fragmentManager = ((FragmentActivity) mContext).getSupportFragmentManager();
+        FragmentManager fragmentManager = ((FragmentActivity) mContext).getFragmentManager();
         List<FragmentManager.BackStackEntry> fragmentList = new ArrayList<>();
         int size = fragmentManager.getBackStackEntryCount();
         for (int i = 0; i < size; i++) {

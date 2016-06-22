@@ -1,7 +1,7 @@
 package org.fingerlinks.mobile.android.navigator.builder;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 
 /**
  * Created by koush on 5/30/13.

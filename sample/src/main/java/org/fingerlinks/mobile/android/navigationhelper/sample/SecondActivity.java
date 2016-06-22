@@ -1,7 +1,7 @@
 package org.fingerlinks.mobile.android.navigationhelper.sample;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -61,14 +61,14 @@ public class SecondActivity extends AppCompatActivity {
                 Navigator.with(SecondActivity.this).utils().finishWithAnimation();
                 break;
             case R.id.action_go_to:
-                if (Navigator.with(SecondActivity.this).utils().canGoBackToSpecificPoint("fragment_4", R.id.container, getSupportFragmentManager())) {
+                if (Navigator.with(SecondActivity.this).utils().canGoBackToSpecificPoint("fragment_4", R.id.container, getFragmentManager())) {
                     Navigator.with(SecondActivity.this).utils().goBackToSpecificPoint("fragment_4");
                 } else {
                     Toast.makeText(SecondActivity.this, "Can't go to fragment_4", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.action_go_to_home:
-                if (Navigator.with(SecondActivity.this).utils().canGoBackToSpecificPoint("HOME_FRAGMENT", R.id.container, getSupportFragmentManager())) {
+                if (Navigator.with(SecondActivity.this).utils().canGoBackToSpecificPoint("HOME_FRAGMENT", R.id.container, getFragmentManager())) {
                     Navigator.with(SecondActivity.this)
                             .utils()
                             .goBackToSpecificPoint("HOME_FRAGMENT");
@@ -77,7 +77,7 @@ public class SecondActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.action_back:
-                boolean canGoBack = Navigator.with(SecondActivity.this).utils().canGoBack(getSupportFragmentManager());
+                boolean canGoBack = Navigator.with(SecondActivity.this).utils().canGoBack(getFragmentManager());
                 Toast.makeText(SecondActivity.this, "Can go back? " + canGoBack, Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -86,7 +86,7 @@ public class SecondActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (Navigator.with(SecondActivity.this).utils().canGoBack(getSupportFragmentManager())) {
+        if (Navigator.with(SecondActivity.this).utils().canGoBack(getFragmentManager())) {
             Navigator.with(SecondActivity.this)
                     .utils()
                     .goToPreviousBackStack();

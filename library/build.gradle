@@ -28,7 +28,3 @@ publish {
     artifactId = 'Navigator'
     publishVersion = '0.1.2'
 }
-
-dependencies {
-    compile 'com.android.support:support-v4:23.3.0'
-}

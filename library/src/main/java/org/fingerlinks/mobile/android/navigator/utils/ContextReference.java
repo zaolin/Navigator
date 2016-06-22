@@ -113,14 +113,14 @@ public abstract class ContextReference<T> extends WeakReference<T> {
         }
     }
 
-    static class SupportFragmentContextReference extends ContextReference<android.support.v4.app.Fragment> {
-        public SupportFragmentContextReference(android.support.v4.app.Fragment fragment) {
+    static class SupportFragmentContextReference extends ContextReference<android.app.Fragment> {
+        public SupportFragmentContextReference(android.app.Fragment fragment) {
             super(fragment);
         }
 
         @Override
         public Context getContext() {
-            android.support.v4.app.Fragment fragment = get();
+            android.app.Fragment fragment = get();
             if (fragment == null)
                 return null;
             return fragment.getActivity();
@@ -128,7 +128,7 @@ public abstract class ContextReference<T> extends WeakReference<T> {
 
         @Override
         public String isAlive() {
-            android.support.v4.app.Fragment fragment = get();
+            android.app.Fragment fragment = get();
             if (fragment == null)
                 return "Fragment reference null";
             String ret = ActivityContextReference.isAlive(fragment.getActivity());

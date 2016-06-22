@@ -1,8 +1,8 @@
 package org.fingerlinks.mobile.android.navigator;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
 
 import java.io.Serializable;
 
