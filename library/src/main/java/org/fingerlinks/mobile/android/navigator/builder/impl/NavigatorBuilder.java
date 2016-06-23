@@ -72,7 +72,7 @@ public class NavigatorBuilder extends BaseBuilder implements Builders.Any.N {
                             ((Activity) mContextReference.getContext()).
                                     overridePendingTransition(
                                             R.animator.fragment_slide_bottom_enter,
-                                            0);
+                                            R.animator.fragment_slide_bottom_exit);
                             break;
                     }
                     break;

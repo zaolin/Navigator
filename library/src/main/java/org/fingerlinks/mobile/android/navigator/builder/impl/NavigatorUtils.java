@@ -190,7 +190,7 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     public void finishWithAnimation(AnimationEnum animation) {
         switch (animation) {
             case VERTICAL:
-                finishWithAnimation(0, R.animator.fragment_slide_bottom_exit);
+                finishWithAnimation(R.animator.fragment_slide_bottom_enter, R.animator.fragment_slide_bottom_exit);
                 break;
             case HORIZONTAL:
                 finishWithAnimation(R.animator.fragment_slide_left_enter, R.animator.fragment_slide_right_exit);
