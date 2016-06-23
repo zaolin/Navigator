@@ -229,7 +229,7 @@ public class NavigatorHelper {
                     ((Activity) mContext).overridePendingTransition(mNavBean.getAnimations()[0], mNavBean.getAnimations()[1]);
                     break;
                 default:
-                    ((Activity) mContext).overridePendingTransition(R.animator.slide_in_from_left, R.animator.slide_out_to_left);
+                    ((Activity) mContext).overridePendingTransition(R.animator.fragment_slide_left_enter, R.animator.fragment_slide_left_exit);
                     break;
             }
         }
@@ -248,7 +248,7 @@ public class NavigatorHelper {
                     fragmentTransaction.setCustomAnimations(mNavBean.getAnimations()[0], mNavBean.getAnimations()[1], mNavBean.getAnimations()[2], mNavBean.getAnimations()[3]);
                     break;
                 default:
-                    fragmentTransaction.setCustomAnimations(R.animator.view_flipper_transition_in_left, R.animator.view_flipper_transition_out_left, R.animator.view_flipper_transition_in_right, R.animator.view_flipper_transition_out_right);
+                    fragmentTransaction.setCustomAnimations(R.animator.fragment_slide_left_enter, R.animator.fragment_slide_left_exit, R.animator.fragment_slide_right_enter, R.animator.fragment_slide_right_exit);
                     break;
             }
         }

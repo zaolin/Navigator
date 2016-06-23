@@ -2,7 +2,6 @@ package org.fingerlinks.mobile.android.navigator.builder.impl;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -191,10 +190,10 @@ public class NavigatorUtils extends BaseBuilder implements Builders.Any.U {
     public void finishWithAnimation(AnimationEnum animation) {
         switch (animation) {
             case VERTICAL:
-                finishWithAnimation(R.animator.fade_in, R.animator.slide_out_to_bottom);
+                finishWithAnimation(0, R.animator.fragment_slide_bottom_exit);
                 break;
             case HORIZONTAL:
-                finishWithAnimation(R.animator.slide_in_from_left, R.animator.slide_out_to_right);
+                finishWithAnimation(R.animator.fragment_slide_left_enter, R.animator.fragment_slide_right_exit);
                 break;
         }
     }
